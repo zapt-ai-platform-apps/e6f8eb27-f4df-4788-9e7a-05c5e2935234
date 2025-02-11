@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { generateTemplate } from './services/templateService';
 import * as Sentry from '@sentry/browser';
+import VoiceBot from './components/VoiceBot';
 
 export default function App() {
   const [description, setDescription] = useState('');
@@ -12,30 +13,30 @@ export default function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Iniciando generación de plantilla");
+    console.log('Iniciando generación de plantilla');
     setLoading(true);
     setError(null);
     setTemplateHtml(null);
 
     try {
       const data = await generateTemplate({ description, templateType, language });
-      console.log("Plantilla generada:", data.templateHtml);
+      console.log('Plantilla generada:', data.templateHtml);
       setTemplateHtml(data.templateHtml);
     } catch (err) {
-      console.error("Error en la solicitud de generación de plantilla:", err);
+      console.error('Error en la solicitud de generación de plantilla:', err);
       Sentry.captureException(err);
-      setError(err.message || "Ocurrió un error al generar la plantilla");
+      setError(err.message || 'Ocurrió un error al generar la plantilla');
     } finally {
       setLoading(false);
     }
   };
 
   const downloadUrl = templateHtml
-    ? "data:text/html;charset=utf-8," + encodeURIComponent(templateHtml)
-    : "#";
+    ? 'data:text/html;charset=utf-8,' + encodeURIComponent(templateHtml)
+    : '#';
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 text-gray-800">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 text-gray-800 relative">
       <div className="w-full max-w-xl p-6 bg-white rounded shadow h-full">
         <h1 className="text-2xl font-bold mb-4">Generador de Plantillas Web</h1>
         <form onSubmit={handleSubmit}>
@@ -70,12 +71,12 @@ export default function App() {
               <option value="English">English</option>
             </select>
           </div>
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={loading}
             className="mt-4 bg-blue-500 text-white px-4 py-2 rounded cursor-pointer disabled:opacity-50"
           >
-            {loading ? "Generando..." : "Generar Plantilla"}
+            {loading ? 'Generando...' : 'Generar Plantilla'}
           </button>
         </form>
         {error && <p className="text-red-500 mt-2">{error}</p>}
@@ -87,9 +88,9 @@ export default function App() {
               srcDoc={templateHtml}
               className="w-full h-64 border"
             ></iframe>
-            <a 
-              href={downloadUrl} 
-              download="plantilla.html" 
+            <a
+              href={downloadUrl}
+              download="plantilla.html"
               className="mt-2 inline-block bg-green-500 text-white px-4 py-2 rounded cursor-pointer"
             >
               Descargar Plantilla
@@ -97,16 +98,17 @@ export default function App() {
           </div>
         )}
         <footer className="mt-8 text-center">
-          <a 
-            href="https://www.zapt.ai" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="https://www.zapt.ai"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-sm text-blue-600 cursor-pointer"
           >
             Made on ZAPT
           </a>
         </footer>
       </div>
+      <VoiceBot />
     </div>
   );
 }
