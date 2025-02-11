@@ -1,7 +1,7 @@
 {
-  "name": "reactjs-vite-tailwind-vercel",
+  "name": "generador-plantillas-web",
   "version": "1.0.0",
-  "description": "ReactJS app with Vite, Tailwind",
+  "description": "Aplicación de ReactJS con Vite y Tailwind para generar plantillas web mediante inteligencia artificial",
   "type": "module",
   "scripts": {
     "dev": "vite",

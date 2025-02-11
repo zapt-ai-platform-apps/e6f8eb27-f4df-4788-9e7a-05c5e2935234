@@ -1,10 +1,10 @@
-# Generador de Videos Cinematográficos
+# Generador de Plantillas Web
 
-Esta aplicación utiliza inteligencia artificial para generar videos cinematográficos a partir de un texto descriptivo. La interfaz está completamente en español y permite previsualizar y descargar el video generado.
+Esta aplicación utiliza inteligencia artificial para generar plantillas web visualmente atractivas y personalizables a partir de una descripción. La interfaz está completamente en español y permite previsualizar y descargar la plantilla generada.
 
 ## Recorridos de Usuario Recomendados
 
-1. [Generar Video Cinematográfico](docs/journeys/generar-video-cinematografico.md) - Convierte un guión en un video cinematográfico utilizando inteligencia artificial.
+1. [Generar Plantilla Web](docs/journeys/generar-plantilla-web.md) - Crea una plantilla web a partir de una descripción, seleccionando el tipo de plantilla y el idioma.
 
 ---
-Ambiente PWA, Sentry y análisis están integrados en la aplicación para garantizar una experiencia fluida, segura y con seguimiento de errores.
+La aplicación integra soporte PWA, Sentry para seguimiento de errores y análisis con Umami para garantizar una experiencia fluida y segura.
